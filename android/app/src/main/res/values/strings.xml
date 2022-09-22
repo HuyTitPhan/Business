@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">BusinessSuiteAdverts</string>
+     <string moduleConfig="true" name="CodePushDeploymentKey">MqMb6cuX0bbL-Aqi0M4dOjGD2LL4aOuMtjXAt</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
+<string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
+</resources>
