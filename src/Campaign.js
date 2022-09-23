@@ -8,6 +8,7 @@ import { ScrollView } from "native-base";
 import { useSelector, useDispatch } from 'react-redux'
 import { actAddCampaign } from "./redux/actCampaign";
 import moment from 'moment';
+import Back from './Back';
 
 const width = Dimensions.get("window").width
 var height = Dimensions.get("window").height;
@@ -49,21 +50,14 @@ const Campaign = ({ props, navigation }) => {
     }
 
     return (
-        <View style={{ backgroundColor: '#fff', flex: 1 }}>
+        <SafeAreaView style={{ backgroundColor: '#fff', flex: 1 }}>
+            {/* Back */}
+            <Back back={() => navigation.goBack()} />
+            <View style={{ marginBottom: 20, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: '800', color: '#2c3e50' }}> Campaign </Text>
+            </View>
             <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
-                <SafeAreaView style={{ marginTop: isIphoneX() ? 40 : 40, }}>
-
-                    {/* {isIphoneX() } */}
-
-                    {/* <Text style={{ fontWeight: '700', fontSize: 30, marginBottom: 40 }}>ADS FOR BUSINESS</Text> */}
-                    <View style={{ width: width, height: 80, marginBottom: 20, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
-
-                        <Text style={{ fontSize: 20, fontWeight: '800', color: '#2c3e50' }}> Campaign </Text>
-                        {/* <Image
-              style={{ width: 80, height: 40, marginBottom: 20 }}
-              source={logo}
-            /> */}
-                    </View>
+                <View style={{flex: 1}}>
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={styles.text}>Content  </Text>
                         <TextInput
@@ -136,7 +130,7 @@ const Campaign = ({ props, navigation }) => {
                     </View>
 
 
-                </SafeAreaView>
+                </View>
             </ScrollView>
             <View style={{ flexDirection: 'row' }}>
                 <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 40, width: width * 0.5 }}>
@@ -151,7 +145,7 @@ const Campaign = ({ props, navigation }) => {
                 </View>
             </View>
 
-        </View>
+        </SafeAreaView>
     );
 };
 

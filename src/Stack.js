@@ -9,13 +9,16 @@ import HelpScreen from './help';
 import Start from './Start';
 import Post1 from './Post1';
 import List from './List';
-import Home from './HomeScreen';
+import News from './News';
 import ChangPostid from './ChangPostid';
 import Calendars from './Calendars';
 import Charts from './Charts';
 import Campaign from './Campaign';
 import Price from './Price';
+import Home from './Home';
+import Search from './Search';
 import CampaignList from './CampaignList';
+import Notifications from './Notifications';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 function MyTabs() {
@@ -31,7 +34,7 @@ function MyTabs() {
             {/* <Tab.Screen name="Settings" component={Settings} /> */}
             <Tab.Screen name="Campaign" component={Campaign} n/>
             <Tab.Screen name="Calendars" component={Calendars} />
-            <Tab.Screen name="Charts" component={Charts} />
+            {/* <Tab.Screen name="Charts" component={Charts} /> */}
     
     
          
@@ -53,6 +56,10 @@ function mainStack() {
             <Tab.Screen name="List" component={List} />
             <Tab.Screen name="ChangPostid" component={ChangPostid} />
             <Stack.Screen name="CampaignList" component={CampaignList} />
+            <Stack.Screen name="Search" component={Search} />
+            <Stack.Screen name="News" component={News} />
+            <Stack.Screen name="Charts" component={Charts} />
+            <Stack.Screen name="Notifications" component={Notifications} />
         </Stack.Navigator>
     );
 }
