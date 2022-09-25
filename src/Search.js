@@ -2,6 +2,7 @@ import React from "react";
 import { Dimensions, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import IconI from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from "react-redux";
+import BottomSheet from 'react-native-simple-bottom-sheet';
 const width = Dimensions.get("window").width
 var height = Dimensions.get("window").height;
 const logo = require('../src/images/2.png')
@@ -53,6 +54,9 @@ const Search = (props) => {
           <Text style = {{textAlign: 'center', color: '#FFFFFF'}}>Search</Text>
         </TouchableOpacity>
       </View>
+      <BottomSheet isOpen = {false}>
+      <View />
+      </BottomSheet>
     </SafeAreaView>
   );
 };

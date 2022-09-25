@@ -1,5 +1,5 @@
 
-import { Center } from "native-base";
+import { Center, ScrollView } from "native-base";
 import React from "react";
 import { Alert, Dimensions, SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 const width = Dimensions.get("window").width
@@ -102,6 +102,7 @@ const Ilogin = ({ navigation }) => {
       </View>
 
       <Text style={{ fontSize: 15, marginTop: 30, fontWeight: 'bold' }}>Campaigns management</Text>
+      <ScrollView>
       <View style={{ flexDirection: 'row', marginVertical: 20 }}>
         <View style={{ flex: 1 }}>
           <TouchableOpacity 
@@ -146,6 +147,7 @@ const Ilogin = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
 
     </SafeAreaView>
   );

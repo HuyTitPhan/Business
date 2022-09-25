@@ -10,7 +10,7 @@ import { ScrollView } from 'native-base';
 
 const width = Dimensions.get('window').width;
 
-const Warppers = () => {
+const Warppers = (props) => {
 
 
   const [screen1, onScreen1] = React.useState(0);
