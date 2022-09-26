@@ -18,6 +18,9 @@ export const Example = (props) => {
     }, [])
 
     console.log("------------------------------------")
+    console.log("------------------------------------", campaign)
+    console.log("=====> conten:", props.route.params.conten)
+
     const removeList = (content, i) => {
         console.log("-----hello word----");
         dispatch(actRemoveCampaign(content));
@@ -40,7 +43,7 @@ export const Example = (props) => {
                             <View style={{ backgroundColor: '#ffffff', borderRadius: 10, paddingLeft: 20, marginBottom: 15 }}>
                                 <View style={{ marginTop: 20, flexDirection: 'row' }}>
                                     <View style={{ flex: 3 }}>
-                                        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Profile code: {item.code} </Text>
+                                        <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{item.content}</Text>
                                     </View>
 
                                     <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
@@ -53,18 +56,18 @@ export const Example = (props) => {
 
                                 <View style={styles.border}></View>
                                 <TouchableOpacity>
-                                    <View style={{ paddingVertical: 5 }}>
-                                        <View style={{ flexDirection: 'row', paddingTop: 10 }}>
+                                    <View style={{  flexDirection: 'row', paddingVertical: 5 }}>
+                                        <View style={{ flexDirection: 'row', flex: 1 }}>
                                             <IconA name="save" size={20} />
-                                            <Text style={{ fontWeight: '600', fontSize: 20 }}> {item.content}</Text>
+                                            <Text style={{ color: '#6b6e87' }}> {item.code}</Text>
                                         </View>
-                                        <View style={{ flexDirection: 'row' }}>
+                                        <View style={{ flexDirection: 'row', flex: 1 }}>
                                             <IconE name="date-range" size={20} />
                                             <Text style={{ color: '#6b6e87' }}> {item.date}</Text>
                                         </View>
                                     </View>
 
-                                    <View style={[{ flexDirection: 'row', paddingVertical: 10 }]}>
+                                    <View style={[{ flexDirection: 'row', paddingVertical: 5 }]}>
                                         <View style={{ flexDirection: 'column', flex: 1 }}>
                                             <Text style={{ color: '#6b6e87' }}>Budget</Text>
                                             <Text style={{ fontWeight: '700' }}>{item.budget}</Text>

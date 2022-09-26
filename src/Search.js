@@ -2,7 +2,7 @@ import React from "react";
 import { Dimensions, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import IconI from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from "react-redux";
-import BottomSheet from 'react-native-simple-bottom-sheet';
+// import BottomSheet from 'react-native-simple-bottom-sheet';
 const width = Dimensions.get("window").width
 var height = Dimensions.get("window").height;
 const logo = require('../src/images/2.png')
@@ -14,7 +14,7 @@ const Search = (props) => {
   }
 
   const searchCode = () => {
-    var campaign = campaigns.filter(c => c.code == code);
+    var campaign = campaigns.filter(c => c.code == code && c.status == true);
     console.log("=====> searchCode campaign: ", campaign);
     // if(campaign.length == 0) {
 
@@ -41,6 +41,7 @@ const Search = (props) => {
             <IconI name="ios-search-sharp" size={25} />
           </View>
           <TextInput 
+          placeholder="CODE"
           style = {{width: '80%'}}
           onChangeText = {setCode} />
         </View>
@@ -54,9 +55,9 @@ const Search = (props) => {
           <Text style = {{textAlign: 'center', color: '#FFFFFF'}}>Search</Text>
         </TouchableOpacity>
       </View>
-      <BottomSheet isOpen = {false}>
+      {/* <BottomSheet isOpen = {false}>
       <View />
-      </BottomSheet>
+      </BottomSheet> */}
     </SafeAreaView>
   );
 };

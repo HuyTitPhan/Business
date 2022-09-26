@@ -10,7 +10,9 @@ import IconI from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from "react-redux";
 const Ilogin = ({ navigation }) => {
   const [Username, onChangeUsername] = React.useState("");
-  const Campaigns = useSelector((state) => state.campaign);
+  const totalCampaigns = useSelector((state) => state.campaign);
+  const campaigns = totalCampaigns.filter(c => c.status == true);
+  const cancelCampaigns = totalCampaigns.filter(c => c.status != true);
 
   const goCampain = () => {
     console.log("go campaign ........")
@@ -27,9 +29,10 @@ const Ilogin = ({ navigation }) => {
     navigation.navigate("News");
   }
 
-  const goListCampaign = () => {
+  const goListCampaign = (content) => {
     console.log("go list campaign ........")
-    navigation.navigate("CampaignList");
+    console.log("go list conten: ", content)
+    navigation.navigate("CampaignList", { conten: content });
   }
 
   const goSearch = () => {
@@ -49,17 +52,17 @@ const Ilogin = ({ navigation }) => {
       <View style={styles.top}>
         <View style={{ width: '50%', flexDirection: 'row' }}>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#3383F9' }}>Business</Text>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#3383F9' }}>Business</Text>
           </View>
-          <Text style={{ fontSize: 11, fontWeight: 'bold' }}> Suite </Text>
+          <Text style={{ fontSize: 12, fontWeight: 'bold' }}> Suite </Text>
           <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 13, fontWeight: 'bold', color: '#3383F9' }}>Adverts</Text>
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#3383F9' }}>Adverts</Text>
           </View>
         </View>
-        <TouchableOpacity 
-        style={{ width: '50%', alignItems: 'flex-end' }}
-        onPress = {goNoti}>
-        <IconM name='notifications-none' size={25}></IconM>
+        <TouchableOpacity
+          style={{ width: '50%', alignItems: 'flex-end' }}
+          onPress={goNoti}>
+          <IconM name='notifications-none' size={25}></IconM>
         </TouchableOpacity>
       </View>
 
@@ -67,9 +70,9 @@ const Ilogin = ({ navigation }) => {
         <Text>Mày muốn gì?</Text>
         <View style={styles.headerTop}>
           <View style={{ width: '33.33%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <TouchableOpacity 
-            style={{ justifyContent: 'center', alignItems: 'center' }}
-            onPress = {goCampain}>
+            <TouchableOpacity
+              style={{ justifyContent: 'center', alignItems: 'center' }}
+              onPress={goCampain}>
               <View style={[styles.round, { backgroundColor: '#9C92E1' }]}>
                 <IconI name="ios-add-outline" size={15}></IconI>
               </View>
@@ -78,9 +81,9 @@ const Ilogin = ({ navigation }) => {
           </View>
 
           <View style={{ width: '33.33%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <TouchableOpacity 
-            onPress={goSearch}
-            style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <TouchableOpacity
+              onPress={goSearch}
+              style={{ justifyContent: 'center', alignItems: 'center' }}>
               <View style={[styles.round, { backgroundColor: '#11C969' }]}>
                 <IconI name="ios-search-outline" size={15}></IconI>
               </View>
@@ -89,9 +92,9 @@ const Ilogin = ({ navigation }) => {
           </View>
 
           <View style={{ width: '33.33%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <TouchableOpacity 
-            style={{ justifyContent: 'center', alignItems: 'center' }}
-            onPress = {goNews}>
+            <TouchableOpacity
+              style={{ justifyContent: 'center', alignItems: 'center' }}
+              onPress={goNews}>
               <View style={[styles.round, { backgroundColor: '#42E3DF' }]}>
                 <IconI name="ios-newspaper" size={15}></IconI>
               </View>
@@ -103,50 +106,53 @@ const Ilogin = ({ navigation }) => {
 
       <Text style={{ fontSize: 15, marginTop: 30, fontWeight: 'bold' }}>Campaigns management</Text>
       <ScrollView>
-      <View style={{ flexDirection: 'row', marginVertical: 20 }}>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity 
-          onPress={goListCampaign}
-          style={[styles.square, { backgroundColor: '#D0ECF5' }]}>
-            <View style={styles.roundHeader}>
-              <IconI name="open-outline" size={20}></IconI>
-            </View>
-            <Text style={styles.textHeader}>List Campaign</Text>
-            <Text>{Campaigns.length} profile</Text>
-          </TouchableOpacity>
+        <View style={{ flexDirection: 'row', marginVertical: 20 }}>
+          <View style={{ flex: 1 }}>
+            <TouchableOpacity
+              onPress={() => goListCampaign('dhdhfhd')}
+              style={[styles.square, { backgroundColor: '#D0ECF5' }]}>
+              <View style={styles.roundHeader}>
+                <IconI name="open-outline" size={20}></IconI>
+              </View>
+              <Text style={styles.textHeader}>List Campaign</Text>
+              <Text>{campaigns.length} profile</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ flex: 1, alignItems: 'flex-end' }}>
+            <TouchableOpacity
+              // onPress={goListCampaign}
+              style={[styles.square, { backgroundColor: '#E9E7F7' }]}>
+              <View style={styles.roundHeader}>
+                <IconI name="md-close" size={20}></IconI>
+              </View>
+              <Text style={styles.textHeader}>Campaigns canceled</Text>
+              <Text>{cancelCampaigns.length} profile</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <View style={{ flex: 1, alignItems: 'flex-end' }}>
-          <TouchableOpacity style={[styles.square, { backgroundColor: '#E9E7F7' }]}>
-            <View style={styles.roundHeader}>
-              <IconI name="md-close" size={20}></IconI>
-            </View>
-            <Text style={styles.textHeader}>Calendar</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 1 }}>
+            <TouchableOpacity style={[styles.square, { backgroundColor: '#FAEBE8' }]}>
+              <View style={styles.roundHeader}>
+                <IconI name="md-close" size={20}></IconI>
+              </View>
+              <Text style={styles.textHeader}>Calendar</Text>
+            </TouchableOpacity>
+          </View>
 
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity style={[styles.square, { backgroundColor: '#FAEBE8' }]}>
-            <View style={styles.roundHeader}>
-              <IconI name="md-close" size={20}></IconI>
-            </View>
-            <Text style={styles.textHeader}>Campaigns</Text>
-          </TouchableOpacity>
+          <View style={{ flex: 1, alignItems: 'flex-end' }}>
+            <TouchableOpacity
+              onPress={goChart}
+              style={[styles.square, { backgroundColor: '#E2F6F5' }]}>
+              <View style={styles.roundHeader}>
+                <IconI name="ios-stats-chart-outline" size={20}></IconI>
+              </View>
+              <Text style={styles.textHeader}>Chart</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        <View style={{ flex: 1, alignItems: 'flex-end' }}>
-          <TouchableOpacity 
-          onPress = {goChart}
-          style={[styles.square, { backgroundColor: '#E2F6F5' }]}>
-            <View style={styles.roundHeader}>
-              <IconI name="ios-stats-chart-outline" size={20}></IconI>
-            </View>
-            <Text style={styles.textHeader}>Chart</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
       </ScrollView>
 
     </SafeAreaView>
@@ -157,7 +163,8 @@ const styles = StyleSheet.create({
   top: {
     height: 30,
     flexDirection: 'row',
-    marginBottom: 30
+    marginBottom: 30,
+    marginTop: 10
   },
   headerTop: {
     height: 80,
@@ -174,7 +181,7 @@ const styles = StyleSheet.create({
   },
   square: {
     height: 200,
-    width: '90%',
+    width: '95%',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',

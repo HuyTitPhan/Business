@@ -8,7 +8,12 @@ const campaignReducer = (state = [], action) => {
       return data;
     case REMOVE_CAMPAIGN:
       const content = action.content;
-      const newlist = state.filter(loaitin => loaitin.content != content);
+      const newlist = state.map(c => {
+        if(c.content == content) {
+          c.status = false;
+        }
+        return c;
+      });
       console.log("Xóa LT:", newlist);
       return newlist;
     default: return state;

@@ -24,6 +24,7 @@ const Campaign = ({ props, navigation }) => {
     const [open, setOpen] = React.useState(false)
     const [listCampaign, setListCampaign] = React.useState([])
     const dispatch = useDispatch();
+    const campaigns = useSelector((state) => state.campaign);
 
     const saveList = () => {
         if (content === undefined || content == null || content.length <= 0 ||
@@ -35,6 +36,8 @@ const Campaign = ({ props, navigation }) => {
                 describe: describe,
                 marketing: marketing,
                 budget: budget,
+                code: 'CA' + '000' + (campaigns.length + 1),
+                status: true,
                 date: moment(date).format('YYYY-MM-DD')
             }
             listCampaign.push(obj)
