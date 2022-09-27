@@ -7,18 +7,18 @@ import IconO from 'react-native-vector-icons/FontAwesome';
 import IconFO from 'react-native-vector-icons/Fontisto';
 import { getBottomSpace, isIphoneX } from './utils';
 function renderIcon(label) {
-    console.log(label)
+    console.log("dddfddf",label)
 
     return (
         <View style={{ marginTop: 5 }}>
-            {label == 'Home' && <IconF name='home' size={25} color="#2c3e50" />}
+            {label == 'Home' && <IconFO name='home' size={25} color='#2c3e50' />}
             {label == 'Settings' && <IconM name='scatter-plot' size={25} color="#2c3e50" />}
             {label == 'Change' && <IconA name='create-outline' size={25} color="#2c3e50" />}
             {label == 'Support' && <IconM name='support-agent' size={25} color="#2c3e50" />}
             {label == 'Tracking' && <IconO name='comments-o' size={25} color="#2c3e50" />}
             {label == 'Calendars' && <IconO name='sticky-note-o' size={25} color="#2c3e50" />}
             {label == 'Charts' && <IconO name='line-chart' size={25} color="#2c3e50" />}
-            {label == 'Campaign' && <IconO name='wpforms' size={25} color="#2c3e50" />}
+            {label == 'Campaign' && <IconO name='wpforms' size={50} color="#2c3e50" />}
             {label == 'Price' && <IconFO name='money-symbol' size={25} color="#2c3e50" />}
         </View>
 

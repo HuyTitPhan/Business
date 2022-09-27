@@ -1,7 +1,8 @@
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import React, { useEffect } from "react";
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import { useSelector, useDispatch } from "react-redux";
+import Back from './Back';
 
 const Calendars = ({ navigation }) => {
     const [data, setData] = React.useState()
@@ -18,10 +19,8 @@ const Calendars = ({ navigation }) => {
     }, [campaign])
 
     return (
-        <View style={{ backgroundColor: 'white', paddingTop: 60, paddingBottom: 100 }}>
-            <View style={{ marginBottom: 20 }}>
-                <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: '800', color: '#2c3e50' }}>Remind</Text>
-            </View>
+        <SafeAreaView style={{ flex: 1 }}>
+            <Back back={() => navigation.goBack()} />
             <View>
                 {/* <Calendar></Calendar> */}
                 <CalendarList
@@ -38,7 +37,7 @@ const Calendars = ({ navigation }) => {
                     markedDates={data}
                 />
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 

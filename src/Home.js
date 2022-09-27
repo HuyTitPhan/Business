@@ -29,10 +29,10 @@ const Ilogin = ({ navigation }) => {
     navigation.navigate("News");
   }
 
-  const goListCampaign = (content) => {
+  const goListCampaign = (content, status) => {
     console.log("go list campaign ........")
     console.log("go list conten: ", content)
-    navigation.navigate("CampaignList", { conten: content });
+    navigation.navigate("CampaignList", { content: content, status: status });
   }
 
   const goSearch = () => {
@@ -43,6 +43,11 @@ const Ilogin = ({ navigation }) => {
   const goNoti = () => {
     console.log("go Notifications ........")
     navigation.navigate("Notifications");
+  }
+
+  const goCalendar = () => {
+    console.log("go Calendar ........")
+    navigation.navigate("Calendars");
   }
 
   return (
@@ -109,7 +114,7 @@ const Ilogin = ({ navigation }) => {
         <View style={{ flexDirection: 'row', marginVertical: 20 }}>
           <View style={{ flex: 1 }}>
             <TouchableOpacity
-              onPress={() => goListCampaign('dhdhfhd')}
+              onPress={() => goListCampaign('List Campaign', true)}
               style={[styles.square, { backgroundColor: '#D0ECF5' }]}>
               <View style={styles.roundHeader}>
                 <IconI name="open-outline" size={20}></IconI>
@@ -121,7 +126,7 @@ const Ilogin = ({ navigation }) => {
 
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <TouchableOpacity
-              // onPress={goListCampaign}
+              onPress={() => goListCampaign('Campaigns canceled', false)}
               style={[styles.square, { backgroundColor: '#E9E7F7' }]}>
               <View style={styles.roundHeader}>
                 <IconI name="md-close" size={20}></IconI>
@@ -134,7 +139,9 @@ const Ilogin = ({ navigation }) => {
 
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1 }}>
-            <TouchableOpacity style={[styles.square, { backgroundColor: '#FAEBE8' }]}>
+            <TouchableOpacity 
+            onPress={goCalendar}
+            style={[styles.square, { backgroundColor: '#FAEBE8' }]}>
               <View style={styles.roundHeader}>
                 <IconI name="md-close" size={20}></IconI>
               </View>

@@ -27,13 +27,13 @@ function MyTabs() {
             tabBar={props => <MyTabBar {...props} />} 
             screenOptions={{headerShown: false}} >
             <Tab.Screen name="Home" component={Home} />
+            <Tab.Screen name="Campaign" component={Campaign} />
             <Tab.Screen name="Price" component={Price} />
             {/* <Tab.Screen name="Tracking" component={Tracking} /> */}
             {/* <Tab.Screen name="Change" component={Change} /> */}
             {/* <Tab.Screen name="Support" component={Support} /> */}
             {/* <Tab.Screen name="Settings" component={Settings} /> */}
-            <Tab.Screen name="Campaign" component={Campaign} n/>
-            <Tab.Screen name="Calendars" component={Calendars} />
+            {/* <Tab.Screen name="Calendars" component={Calendars} /> */}
             {/* <Tab.Screen name="Charts" component={Charts} /> */}
     
     
@@ -60,6 +60,7 @@ function mainStack() {
             <Stack.Screen name="News" component={News} />
             <Stack.Screen name="Charts" component={Charts} />
             <Stack.Screen name="Notifications" component={Notifications} />
+            <Stack.Screen name="Calendars" component={Calendars} />
         </Stack.Navigator>
     );
 }

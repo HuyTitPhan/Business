@@ -32,9 +32,9 @@ const Warppers = (props) => {
 
     <SafeAreaView  style={{ flex: 1}}>
       {/* Back */}
-      <View style = {{ height: 50, backgroundColor: 'red', width: '100%', flex: 2}}>
-      <Back back={() => props.navigation.goBack()} />
-      <View style={{ height: 30, flexDirection: 'row', backgroundColor: 'gray', width: width * 0.4, borderRadius: 5,  marginTop: 50, marginBottom: 30, justifyContent: 'center', alignItems: 'center',}}>
+      <Back back={() => props.navigation.goBack()}/> 
+      <View style = {{ width: '100%', justifyContent: 'center', alignItems: 'center'}}>
+      <View style={{ height: 30, flexDirection: 'row', backgroundColor: 'gray', width: width * 0.4, borderRadius: 5}}>
         <TouchableOpacity
           style={button[screen1]}
           onPress={clickMonth}>
@@ -47,13 +47,11 @@ const Warppers = (props) => {
         </TouchableOpacity>
       </View>
       </View>
-      <View style = {{flex: 8}}>
         <ScrollView>
         {
           screen1 == 0 ? <MonthChart /> : <YearChart />
         }
         </ScrollView>
-      </View>
     </SafeAreaView >
 
   );
