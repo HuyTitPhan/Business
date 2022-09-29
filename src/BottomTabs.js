@@ -7,7 +7,7 @@ import IconO from 'react-native-vector-icons/FontAwesome';
 import IconFO from 'react-native-vector-icons/Fontisto';
 import { getBottomSpace, isIphoneX } from './utils';
 function renderIcon(label) {
-    console.log("dddfddf",label)
+    console.log(label)
 
     return (
         <View style={{ marginTop: 5 }}>
@@ -18,8 +18,8 @@ function renderIcon(label) {
             {label == 'Tracking' && <IconO name='comments-o' size={25} color="#2c3e50" />}
             {label == 'Calendars' && <IconO name='sticky-note-o' size={25} color="#2c3e50" />}
             {label == 'Charts' && <IconO name='line-chart' size={25} color="#2c3e50" />}
-            {label == 'Campaign' && <IconO name='wpforms' size={50} color="#2c3e50" />}
-            {label == 'Price' && <IconFO name='money-symbol' size={25} color="#2c3e50" />}
+            {label == 'Campaign' && <IconA name='create' size={50} color="#2c3e50" />}
+            {label == 'Price' && <IconA name='md-settings' size={25} color="#2c3e50" />}
         </View>
 
     )
@@ -27,7 +27,7 @@ function renderIcon(label) {
 }
 export default function MyTabBar({ state, descriptors, navigation }) {
     return (
-        <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =
@@ -69,12 +69,20 @@ export default function MyTabBar({ state, descriptors, navigation }) {
                         onLongPress={onLongPress}
                         style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', paddingBottom: getBottomSpace() }}
                     >
-                        {renderIcon(label)}
-                        <Text style={{ color: isFocused ? '#34ace0' : '#222', fontWeight: isFocused ? '600' : '400' }}>
+                        {/* {renderIcon(label)} */}
+                        <View style={{ marginTop: 5 }}>
+                            {label == 'Home' && <IconFO name='home' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Change' && <IconA name='create-outline' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Support' && <IconM name='support-agent' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Tracking' && <IconO name='comments-o' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Calendars' && <IconO name='sticky-note-o' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Charts' && <IconO name='line-chart' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Campaign' && <IconA name='create' size={60} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Settings' && <IconA name='md-settings' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                        </View>
+                        {/* <Text style={{ color: isFocused ? '#34ace0' : '#222', fontWeight: isFocused ? '600' : '400' }}>
                             {label}
-                        </Text>
-
-
+                        </Text> */}
                     </TouchableOpacity>
                 );
             })}

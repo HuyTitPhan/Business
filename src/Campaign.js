@@ -8,7 +8,6 @@ import { ScrollView } from "native-base";
 import { useSelector, useDispatch } from 'react-redux'
 import { actAddCampaign } from "./redux/actCampaign";
 import moment from 'moment';
-import Back from './Back';
 
 const width = Dimensions.get("window").width
 var height = Dimensions.get("window").height;
@@ -54,9 +53,7 @@ const Campaign = ({ props, navigation }) => {
 
     return (
         <SafeAreaView style={{ backgroundColor: '#fff', flex: 1 }}>
-            {/* Back */}
-            <Back back={() => navigation.goBack()} />
-            <View style={{ marginBottom: 20, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ marginVertical: 20, justifyContent: 'center', alignItems: 'center' }}>
                 <Text style={{ fontSize: 20, fontWeight: '800', color: '#2c3e50' }}> Campaign </Text>
             </View>
             <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
@@ -135,13 +132,8 @@ const Campaign = ({ props, navigation }) => {
 
                 </View>
             </ScrollView>
-            <View style={{ flexDirection: 'row' }}>
-                <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 40, width: width * 0.5 }}>
-                    <TouchableOpacity style={styles.btnShow} onPress={showList}>
-                        <Text style={{ color: '#0b192d', fontWeight: '700', fontSize: 15 }}>Show List</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={{ marginTop: 20, marginBottom: 40, width: width * 0.5 }}>
+            <View style={{ marginRight: 20 }}>
+                <View style={{ marginTop: 20, marginBottom: 40, flex: 1, alignItems: 'flex-end'}}>
                     <TouchableOpacity style={styles.btn} onPress={saveList}>
                         <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>Save</Text>
                     </TouchableOpacity>
@@ -182,11 +174,10 @@ const styles = StyleSheet.create({
     btn: {
         width: width * 0.25,
         height: 40,
-        backgroundColor: '#0b192d',
+        backgroundColor: '#3383F9',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-        marginLeft: width * 0.2,
     },
     btnShow: {
         height: 40,

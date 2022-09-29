@@ -22,7 +22,7 @@ export const Example = () => {
         { industry: 'Travel and Hospitality', cpc1: 1.53, cpc2: 0.44 },
     ]
     return (
-        <SafeAreaView style={{ marginTop: 50, paddingHorizontal: 10 }}>
+        <SafeAreaView style={{ marginTop: 20, paddingHorizontal: 10 }}>
             <View style={{ flexDirection: 'row' }}>
                 <Text style={{ flex: 3, color: 'gray', fontSize: 8, fontWeight: 'bold', fontFamily: 'Time' }}>INDUSTRY</Text>
                 <Text style={{ flex: 1, color: 'gray', fontSize: 8, fontWeight: 'bold', textAlign: 'right', marginRight: 10 }}>SEARCH NETWORK</Text>

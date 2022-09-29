@@ -14,9 +14,9 @@ const Ilogin = ({ navigation }) => {
   const campaigns = totalCampaigns.filter(c => c.status == true);
   const cancelCampaigns = totalCampaigns.filter(c => c.status != true);
 
-  const goCampain = () => {
+  const goPrice = () => {
     console.log("go campaign ........")
-    navigation.navigate("Campaign");
+    navigation.navigate("Price");
   }
 
   const goChart = () => {
@@ -77,11 +77,11 @@ const Ilogin = ({ navigation }) => {
           <View style={{ width: '33.33%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
             <TouchableOpacity
               style={{ justifyContent: 'center', alignItems: 'center' }}
-              onPress={goCampain}>
+              onPress={goPrice}>
               <View style={[styles.round, { backgroundColor: '#9C92E1' }]}>
-                <IconI name="ios-add-outline" size={15}></IconI>
+                <IconM name="attach-money" size={20} color='#FFFFFF'></IconM>
               </View>
-              <Text style={{ fontSize: 10, fontWeight: '600' }}>Create Campaign</Text>
+              <Text style={{ fontSize: 10, fontWeight: '600' }}>Price</Text>
             </TouchableOpacity>
           </View>
 
@@ -90,7 +90,7 @@ const Ilogin = ({ navigation }) => {
               onPress={goSearch}
               style={{ justifyContent: 'center', alignItems: 'center' }}>
               <View style={[styles.round, { backgroundColor: '#11C969' }]}>
-                <IconI name="ios-search-outline" size={15}></IconI>
+              <IconM name="search" size={20} color='#FFFFFF'></IconM>
               </View>
               <Text style={{ fontSize: 10, fontWeight: '600' }}>Search</Text>
             </TouchableOpacity>
@@ -101,7 +101,7 @@ const Ilogin = ({ navigation }) => {
               style={{ justifyContent: 'center', alignItems: 'center' }}
               onPress={goNews}>
               <View style={[styles.round, { backgroundColor: '#42E3DF' }]}>
-                <IconI name="ios-newspaper" size={15}></IconI>
+                <IconI name="ios-newspaper" size={20} color='#FFFFFF'></IconI>
               </View>
               <Text style={{ fontSize: 10, fontWeight: '600' }}>News</Text>
             </TouchableOpacity>
@@ -117,7 +117,7 @@ const Ilogin = ({ navigation }) => {
               onPress={() => goListCampaign('List Campaign', true)}
               style={[styles.square, { backgroundColor: '#D0ECF5' }]}>
               <View style={styles.roundHeader}>
-                <IconI name="open-outline" size={20}></IconI>
+                <IconI name="open-outline" size={20} color='#8FCFE4'></IconI>
               </View>
               <Text style={styles.textHeader}>List Campaign</Text>
               <Text>{campaigns.length} profile</Text>
@@ -129,7 +129,7 @@ const Ilogin = ({ navigation }) => {
               onPress={() => goListCampaign('Campaigns canceled', false)}
               style={[styles.square, { backgroundColor: '#E9E7F7' }]}>
               <View style={styles.roundHeader}>
-                <IconI name="md-close" size={20}></IconI>
+                <IconI name="md-close" size={20} color='#9C92E1'></IconI>
               </View>
               <Text style={styles.textHeader}>Campaigns canceled</Text>
               <Text>{cancelCampaigns.length} profile</Text>
@@ -143,7 +143,7 @@ const Ilogin = ({ navigation }) => {
             onPress={goCalendar}
             style={[styles.square, { backgroundColor: '#FAEBE8' }]}>
               <View style={styles.roundHeader}>
-                <IconI name="md-close" size={20}></IconI>
+                <IconI name="md-close" size={20} color='#FFA390'></IconI>
               </View>
               <Text style={styles.textHeader}>Calendar</Text>
             </TouchableOpacity>
@@ -154,7 +154,7 @@ const Ilogin = ({ navigation }) => {
               onPress={goChart}
               style={[styles.square, { backgroundColor: '#E2F6F5' }]}>
               <View style={styles.roundHeader}>
-                <IconI name="ios-stats-chart-outline" size={20}></IconI>
+                <IconI name="ios-stats-chart-outline" size={20} color='#94DBD7'></IconI>
               </View>
               <Text style={styles.textHeader}>Chart</Text>
             </TouchableOpacity>

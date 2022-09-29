@@ -60,18 +60,7 @@ export default ({ navigation }) => {
                 </View>
             </View>
 
-            <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 40 }}>
-                <TouchableOpacity style={{
-                    width: width * 0.7,
-                    height: 40,
-                    backgroundColor: '#2c3e50',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    borderRadius: 100
-                }} onPress={() => logout(navigation)}>
-                    <Text style={{ color: '#fff', fontWeight: '700' }}>Logout</Text>
-                </TouchableOpacity>
-            </View>
+            
 
         </View>
     )
