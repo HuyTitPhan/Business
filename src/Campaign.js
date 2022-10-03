@@ -7,6 +7,7 @@ import { ScrollView } from "native-base";
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { useSelector, useDispatch } from 'react-redux'
 import { actAddCampaign } from "./redux/actCampaign";
+import { RadioButton } from 'react-native-paper';
 import moment from 'moment';
 
 const width = Dimensions.get("window").width
@@ -14,12 +15,13 @@ var height = Dimensions.get("window").height;
 const logo = require('../src/images/2.png')
 
 const Campaign = ({ props, navigation }) => {
-    const [Username, onChangeUsername] = React.useState("");
+    const [level, setLevel] = React.useState('once');
     const [content, onContent] = React.useState("");
     const [describe, onDescribe] = React.useState("");
     const [marketing, onMarketing] = React.useState("");
     const [budget, onBudget] = React.useState("");
     const [date, setDate] = React.useState(new Date())
+    const [dateEnd, setDateEnd] = React.useState(new Date())
     const [open, setOpen] = React.useState(false)
     const [listCampaign, setListCampaign] = React.useState([])
     const dispatch = useDispatch();
@@ -57,7 +59,7 @@ const Campaign = ({ props, navigation }) => {
                 <Text style={{ fontSize: 20, fontWeight: '800', color: '#2c3e50' }}> Campaign </Text>
             </View>
             <ScrollView style={{ backgroundColor: '#fff', flex: 1 }}>
-                <View style={{flex: 1}}>
+                <View style={{ flex: 1 }}>
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={styles.text}>Content  </Text>
                         <TextInput
@@ -96,7 +98,7 @@ const Campaign = ({ props, navigation }) => {
                     </View>
 
                     <View>
-                        <Text style={[styles.text,]}>Time :  </Text>
+                        <Text style={[styles.text,]}>Start Date :  </Text>
                         {/* <Text style={{ width: width * 0.3, margin: 12, }}>{date.toDateString()}</Text>
                             <TouchableOpacity style={{ width: width * 0.3 }} onPress={() => setOpen(true)}>
                             <Icon name='calendar' size={25} color="#2c3e50" />
@@ -126,14 +128,67 @@ const Campaign = ({ props, navigation }) => {
                                 setOpen(false)
                             }}
                         />
-
                     </View>
 
+                    <View>
+                        <Text style={[styles.text,]}>End Date :  </Text>
+                        {/* <Text style={{ width: width * 0.3, margin: 12, }}>{date.toDateString()}</Text>
+                            <TouchableOpacity style={{ width: width * 0.3 }} onPress={() => setOpen(true)}>
+                            <Icon name='calendar' size={25} color="#2c3e50" />
+                            </TouchableOpacity> */}
+                        <View style={{ marginHorizontal: 15, marginBottom: 10 }}>
+                            <TouchableOpacity
+                                style={{ paddingTop: 10 }}
+                                onPress={() => setOpen(true)}>
+                                <Text style={{
+                                    fontSize: 18,
+                                    color: '#1b283b'
+                                }}>{date.toLocaleDateString()}</Text>
+                                <View style={styles.border}></View>
+
+                            </TouchableOpacity>
+                        </View>
+                        <DatePicker
+                            modal
+                            mode='date'
+                            open={open}
+                            date={date}
+                            onConfirm={(dateEnd) => {
+                                setOpen(false)
+                                setDate(date)
+                            }}
+                            onCancel={() => {
+                                setOpen(false)
+                            }}
+                        />
+                    </View>
+
+                    <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                        <RadioButton
+                            value="first"
+                            status={checked === 'first' ? 'checked' : 'unchecked'}
+                            onPress={() => setChecked('first')}
+                            color = '#3383F9'
+                            uncheckedColor="#B9B9B9"
+                        />
+                        <Text>Once</Text>
+                    </View>
+
+                    <View style = {{flexDirection: 'row', alignItems: 'center'}}>
+                        <RadioButton
+                            value="1"
+                            status={checked === '1' ? 'checked' : 'unchecked'}
+                            onPress={() => setChecked('1')}
+                            color = '#3383F9'
+                            uncheckedColor="#B9B9B9"
+                        />
+                        <Text>Daily</Text>
+                    </View>
 
                 </View>
             </ScrollView>
             <View style={{ marginRight: 20 }}>
-                <View style={{ marginTop: 20, marginBottom: 40, flex: 1, alignItems: 'flex-end'}}>
+                <View style={{ marginTop: 20, marginBottom: 40, flex: 1, alignItems: 'flex-end' }}>
                     <TouchableOpacity style={styles.btn} onPress={saveList}>
                         <Text style={{ color: '#fff', fontWeight: '700', fontSize: 15 }}>Save</Text>
                     </TouchableOpacity>

@@ -30,6 +30,7 @@
     "react-native-code-push": "7.0.0",
     "react-native-date-picker": "^4.2.5",
     "react-native-gesture-handler": "^2.1.0",
+    "react-native-paper": "^4.12.4",
     "react-native-public-ip": "^1.0.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
