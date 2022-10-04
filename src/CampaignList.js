@@ -33,6 +33,10 @@ export const Example = (props) => {
         console.log("buttt", result);
     }
 
+    const goDetail = (code) => {
+        props.navigation.navigate("DetailCampaign", {code: code});
+    }
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             {/* Back */}
@@ -73,7 +77,7 @@ export const Example = (props) => {
                                         </View>
 
                                         <View style={styles.border}></View>
-                                        <TouchableOpacity>
+                                        <TouchableOpacity onPress={() => goDetail(item.code)}>
                                             <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
                                                 <View style={{ flexDirection: 'row', flex: 1 }}>
                                                     <IconA name="save" size={20} />

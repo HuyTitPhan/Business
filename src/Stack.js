@@ -18,6 +18,7 @@ import Settings from './Settings';
 import Home from './Home';
 import Search from './Search';
 import Price from './Price';
+import DetailCampaign from './DetailCampaign';
 import CampaignList from './CampaignList';
 import Notifications from './Notifications';
 const Stack = createNativeStackNavigator();
@@ -62,6 +63,7 @@ function mainStack() {
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="Calendars" component={Calendars} />
             <Stack.Screen name="Price" component={Price} />
+            <Stack.Screen name="DetailCampaign" component={DetailCampaign} />
         </Stack.Navigator>
     );
 }

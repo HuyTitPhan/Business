@@ -20,7 +20,7 @@ const Campaign = ({ props, navigation }) => {
     const [describe, onDescribe] = React.useState("");
     const [marketing, onMarketing] = React.useState("");
     const [budget, onBudget] = React.useState("");
-    const [date, setDate] = React.useState(new Date())
+    const [dateStart, setDateStart] = React.useState(new Date())
     const [dateEnd, setDateEnd] = React.useState(new Date())
     const [open, setOpen] = React.useState(false)
     const [listCampaign, setListCampaign] = React.useState([])
@@ -39,7 +39,8 @@ const Campaign = ({ props, navigation }) => {
                 budget: budget,
                 code: 'CA' + '000' + (campaigns.length + 1),
                 status: true,
-                date: moment(date).format('YYYY-MM-DD')
+                dateStart: moment(dateStart).format('YYYY-MM-DD'),
+                dateEnd: moment(dateEnd).format('YYYY-MM-DD')
             }
             listCampaign.push(obj)
             setListCampaign(listCampaign)
@@ -110,7 +111,7 @@ const Campaign = ({ props, navigation }) => {
                                 <Text style={{
                                     fontSize: 18,
                                     color: '#1b283b'
-                                }}>{date.toLocaleDateString()}</Text>
+                                }}>{dateStart.toLocaleDateString()}</Text>
                                 <View style={styles.border}></View>
 
                             </TouchableOpacity>
@@ -119,10 +120,10 @@ const Campaign = ({ props, navigation }) => {
                             modal
                             mode='date'
                             open={open}
-                            date={date}
-                            onConfirm={(date) => {
+                            date={dateStart}
+                            onConfirm={(dateStart) => {
                                 setOpen(false)
-                                setDate(date)
+                                setDateStart(date)
                             }}
                             onCancel={() => {
                                 setOpen(false)
@@ -143,7 +144,7 @@ const Campaign = ({ props, navigation }) => {
                                 <Text style={{
                                     fontSize: 18,
                                     color: '#1b283b'
-                                }}>{date.toLocaleDateString()}</Text>
+                                }}>{dateEnd.toLocaleDateString()}</Text>
                                 <View style={styles.border}></View>
 
                             </TouchableOpacity>
@@ -152,10 +153,10 @@ const Campaign = ({ props, navigation }) => {
                             modal
                             mode='date'
                             open={open}
-                            date={date}
+                            date={dateEnd}
                             onConfirm={(dateEnd) => {
                                 setOpen(false)
-                                setDate(date)
+                                setDateEnd(date)
                             }}
                             onCancel={() => {
                                 setOpen(false)
@@ -165,9 +166,9 @@ const Campaign = ({ props, navigation }) => {
 
                     <View style = {{flexDirection: 'row', alignItems: 'center'}}>
                         <RadioButton
-                            value="first"
-                            status={checked === 'first' ? 'checked' : 'unchecked'}
-                            onPress={() => setChecked('first')}
+                            value="once"
+                            status={level === 'once' ? 'checked' : 'unchecked'}
+                            onPress={() => setLevel('once')}
                             color = '#3383F9'
                             uncheckedColor="#B9B9B9"
                         />
@@ -176,9 +177,9 @@ const Campaign = ({ props, navigation }) => {
 
                     <View style = {{flexDirection: 'row', alignItems: 'center'}}>
                         <RadioButton
-                            value="1"
-                            status={checked === '1' ? 'checked' : 'unchecked'}
-                            onPress={() => setChecked('1')}
+                            value="daily"
+                            status={level === 'daily' ? 'checked' : 'unchecked'}
+                            onPress={() => setLevel('daily')}
                             color = '#3383F9'
                             uncheckedColor="#B9B9B9"
                         />
