@@ -40,7 +40,8 @@ const Campaign = ({ props, navigation }) => {
                 code: 'CA' + '000' + (campaigns.length + 1),
                 status: true,
                 dateStart: moment(dateStart).format('YYYY-MM-DD'),
-                dateEnd: moment(dateEnd).format('YYYY-MM-DD')
+                dateEnd: moment(dateEnd).format('YYYY-MM-DD'),
+                level: level
             }
             listCampaign.push(obj)
             setListCampaign(listCampaign)

@@ -34,7 +34,7 @@ export const Example = (props) => {
     }
 
     const goDetail = (code, status) => {
-        props.navigation.navigate("DetailCampaign", { code: code, status: status });
+        props.navigation.navigate("DetailCampaign", { code: code });
     }
 
     return (
@@ -72,7 +72,7 @@ export const Example = (props) => {
                                             </View>
                                             
                                                 <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                                                    <TouchableOpacity onPress={() => goDetail(item.code, item.status)}>
+                                                    <TouchableOpacity onPress={() => goDetail(item.code)}>
                                                         <View style={[styles.round, { backgroundColor: '#3383F9' }]}>
                                                             <IconA name="arrowright" size={20} color='#FFFFFF' />
                                                         </View>
@@ -87,11 +87,11 @@ export const Example = (props) => {
                                                 <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
                                                     <View style={{ flexDirection: 'row', width: '50%' }}>
                                                         <IconE name="folder" size={20} color='#FFC20A' />
-                                                        <Text style={{ color: '#6b6e87' }}> {item.code}</Text>
+                                                        <Text style={{ fontWeight: '700' }}> {item.code}</Text>
                                                     </View>
                                                     <View style={{ flexDirection: 'row', width: '50%' }}>
-                                                        <IconE name="date-range" size={20} />
-                                                        <Text style={{ color: '#6b6e87' }}> {item.date}</Text>
+                                                        <IconE name="date-range" size={20} color='black' />
+                                                        <Text style={{ fontWeight: '700' }}> {item.dateStart}</Text>
                                                     </View>
                                                 </View>
 
@@ -105,6 +105,7 @@ export const Example = (props) => {
                                                         <Text style={{ fontWeight: '700' }}>{item.marketing}</Text>
                                                     </View>
                                                 </View>
+                                                <Text>{item.dis}</Text>
                                             </View>
                                             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                 <TouchableOpacity onPress={() => removeList(item.content, i)}>

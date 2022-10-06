@@ -1,5 +1,5 @@
 import React from "react";
-import { Dimensions, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Dimensions, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import IconI from 'react-native-vector-icons/Ionicons';
 import { useSelector, useDispatch } from "react-redux";
 // import BottomSheet from 'react-native-simple-bottom-sheet';
@@ -8,18 +8,19 @@ var height = Dimensions.get("window").height;
 const logo = require('../src/images/2.png')
 const Search = (props) => {
   const [code, setCode] = React.useState("");
-  const campaigns = useSelector((state) => state.campaign);
+  const campaignList = useSelector((state) => state.campaign);
   const back = () => {
     props.navigation.goBack();
   }
 
   const searchCode = () => {
-    var campaign = campaigns.filter(c => c.code == code && c.status == true);
+    var campaign = campaignList.find(c => c.code == code && c.status == true);
     console.log("=====> searchCode campaign: ", campaign);
-    props.navigation.navigate("DetailCampaign", { code: campaign[0].code});
-    // if(campaign.length == 0) {
-
-    // }
+    if(null != campaign || campaign !== undefined) {
+    props.navigation.navigate("DetailCampaign", { code: campaign.code});
+    } else {
+      Alert.alert("code does not exist")
+    }
     return campaign;
   }
 
