@@ -11,10 +11,20 @@ import { RadioButton } from 'react-native-paper';
 import Back from './Back';
 import moment from 'moment';
 import { Item } from "react-native-paper/lib/typescript/components/List/List";
+import IconF from 'react-native-vector-icons/Foundation';
 
 const width = Dimensions.get("window").width
 var height = Dimensions.get("window").height;
 const logo = require('../src/images/2.png')
+
+export const Example = ({ content, value }) => {
+    return (
+        <View style= {{flexDirection: 'row', marginHorizontal: 20}}>
+            <Text style = {styles.title}>{content}</Text>
+            <Text style = {styles.content}>{value}</Text>
+        </View>
+    )
+}
 
 const Detail = (props) => {
     const [level, setLevel] = React.useState('once');
@@ -30,32 +40,30 @@ const Detail = (props) => {
 
     const campaigns = useSelector((state) => state.campaign);
     const campaign = campaigns.filter(c => c.code = props.route.params.code);
+    const status = props.route.params.status;
     console.log("detailCampaign", campaign);
+    console.log("status", status);
 
     return (
         <SafeAreaView style={{ backgroundColor: '#fff', flex: 1, }}>
             <Back back={() => props.navigation.goBack()} />
             {
                 campaign.map((item, i) => 
-                    <View style={{ marginHorizontal: 20 }}>
-                        <Text style={styles.title}>Content</Text>
-                        <Text style={styles.content}>{item.content}</Text>
-
-                        <Text style={styles.title}>Describe</Text>
-                        <Text style={styles.content}>{item.describe}</Text>
-
-                        <Text style={styles.title}>Marketing</Text>
-                        <Text style={styles.content}>{item.marketing}</Text>
-
-                        <Text style={styles.title}>Code</Text>
-                        <Text style={styles.content}>{item.code}</Text>
-
-                        <Text style={styles.title}>Start Date</Text>
-                        <Text style={styles.content}>{item.dateStart}</Text>
-
-                        <Text style={styles.title}>End Date</Text>
-                        <Text style={styles.content}>{item.dateEnd}</Text>
+                    <View>
+                        <View style = {{height: 30, backgroundColor: status ? '#E7FAF0' : '#F5E4E8', justifyContent: 'center', marginBottom: 20}}>
+                            <View style = {{flexDirection: 'row', marginLeft: 15}}>
+                                <IconF name='flag' size={20} color = {status ?'#11C969' : '#F7484A'}/>
+                                <Text style = {{marginLeft: 10, color: status ?'#11C969' : '#F7484A'}}>{status ? 'Campaign' : 'Campaign canceled'}</Text>
+                            </View>
+                        </View>
+                        <Example content = 'Content' value = {item.content}/>
+                        <Example content = 'Describe' value = {item.describe}/>
+                        <Example content = 'Marketing' value = {item.marketing}/>
+                        <Example content = 'Code' value = {item.code}/>
+                        <Example content = 'Start Date' value = {item.dateStart}/>
+                        <Example content = 'End Date' value = {item.dateEnd}/>
                     </View>
+                   
                 )
             }
         </SafeAreaView>
@@ -64,13 +72,16 @@ const Detail = (props) => {
 
 const styles = StyleSheet.create({
     title: {
+        flex: 1,
         color: 'gray',
         fontSize: 10,
-        fontWeight: 'bold',
     }, 
     content: {
+        flex: 1,
         color: '#0B192D',
-        fontSize: 15
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign: 'right'
     }
 });
 

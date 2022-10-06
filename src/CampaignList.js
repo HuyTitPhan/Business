@@ -33,8 +33,8 @@ export const Example = (props) => {
         console.log("buttt", result);
     }
 
-    const goDetail = (code) => {
-        props.navigation.navigate("DetailCampaign", {code: code});
+    const goDetail = (code, status) => {
+        props.navigation.navigate("DetailCampaign", { code: code, status: status });
     }
 
     return (
@@ -64,44 +64,54 @@ export const Example = (props) => {
                                 result.map((item, i) =>
                                     <View style={{ backgroundColor: '#ffffff', borderRadius: 10, paddingLeft: 20, marginBottom: 15 }}>
                                         <View style={{ marginTop: 20, flexDirection: 'row' }}>
-                                            <View style={{ flex: 3 }}>
+                                            <View style={{ flex: 4 }}>
                                                 <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{item.content}</Text>
+                                                <View style = {{flexDirection: 'row'}}>
+
+                                                </View>
                                             </View>
-                                            {props.route.params.status &&
+                                            
                                                 <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                                                    <TouchableOpacity onPress={() => removeList(item.content, i)}>
-                                                        <IconA name="delete" size={25} />
+                                                    <TouchableOpacity onPress={() => goDetail(item.code, item.status)}>
+                                                        <View style={[styles.round, { backgroundColor: '#3383F9' }]}>
+                                                            <IconA name="arrowright" size={20} color='#FFFFFF' />
+                                                        </View>
                                                     </TouchableOpacity>
                                                 </View>
-                                            }
+                                            
                                         </View>
 
                                         <View style={styles.border}></View>
-                                        <TouchableOpacity onPress={() => goDetail(item.code)}>
-                                            <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
-                                                <View style={{ flexDirection: 'row', flex: 1 }}>
-                                                    <IconA name="save" size={20} />
-                                                    <Text style={{ color: '#6b6e87' }}> {item.code}</Text>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <View style={{ flex: 4 }}>
+                                                <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
+                                                    <View style={{ flexDirection: 'row', width: '50%' }}>
+                                                        <IconE name="folder" size={20} color='#FFC20A' />
+                                                        <Text style={{ color: '#6b6e87' }}> {item.code}</Text>
+                                                    </View>
+                                                    <View style={{ flexDirection: 'row', width: '50%' }}>
+                                                        <IconE name="date-range" size={20} />
+                                                        <Text style={{ color: '#6b6e87' }}> {item.date}</Text>
+                                                    </View>
                                                 </View>
-                                                <View style={{ flexDirection: 'row', flex: 1 }}>
-                                                    <IconE name="date-range" size={20} />
-                                                    <Text style={{ color: '#6b6e87' }}> {item.date}</Text>
+
+                                                <View style={[{ flexDirection: 'row', paddingVertical: 5 }]}>
+                                                    <View style={{ flexDirection: 'column', width: '50%' }}>
+                                                        <Text style={{ color: '#6b6e87' }}>Budget</Text>
+                                                        <Text style={{ fontWeight: '700' }}>{item.budget}</Text>
+                                                    </View>
+                                                    <View style={{ flexDirection: 'column', width: '50%' }}>
+                                                        <Text style={{ color: '#6b6e87' }}>Marketing</Text>
+                                                        <Text style={{ fontWeight: '700' }}>{item.marketing}</Text>
+                                                    </View>
                                                 </View>
                                             </View>
-
-                                            <View style={[{ flexDirection: 'row', paddingVertical: 5 }]}>
-                                                <View style={{ flexDirection: 'column', flex: 1 }}>
-                                                    <Text style={{ color: '#6b6e87' }}>Budget</Text>
-                                                    <Text style={{ fontWeight: '700' }}>{item.budget}</Text>
-                                                </View>
-                                                <View style={{ flexDirection: 'column', flex: 1 }}>
-                                                    <Text style={{ color: '#6b6e87' }}>Marketing</Text>
-                                                    <Text style={{ fontWeight: '700' }}>{item.marketing}</Text>
-                                                </View>
+                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                <TouchableOpacity onPress={() => removeList(item.content, i)}>
+                                                    <IconA name="delete" size={25} />
+                                                </TouchableOpacity>
                                             </View>
-                                        </TouchableOpacity>
-
-
+                                        </View>
                                     </View>
                                 )
                             }
@@ -123,7 +133,14 @@ const styles = StyleSheet.create({
         borderColor: '#f3f4f8',
         marginBottom: 10,
         marginTop: 10
-    }
+    },
+    round: {
+        height: 40,
+        width: 40,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });
 
 export default Example;

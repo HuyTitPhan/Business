@@ -16,6 +16,7 @@ const Search = (props) => {
   const searchCode = () => {
     var campaign = campaigns.filter(c => c.code == code && c.status == true);
     console.log("=====> searchCode campaign: ", campaign);
+    props.navigation.navigate("DetailCampaign", { code: campaign[0].code});
     // if(campaign.length == 0) {
 
     // }
@@ -23,36 +24,36 @@ const Search = (props) => {
   }
 
   return (
-    <SafeAreaView style = {{backgroundColor: '#FFFFFF', flex: 1}}>
-      <View style = {{flex: 8}}>
-      {/* Back */}
-      <View style={{ height: 20, marginTop: 5, marginLeft: 20, marginBottom: 30 }}>
-        <TouchableOpacity
-          onPress={back}>
-          <IconI name="ios-return-down-back" size={25} />
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
+      <View style={{ flex: 8 }}>
+        {/* Back */}
+        <View style={{ height: 20, marginTop: 5, marginLeft: 20, marginBottom: 30 }}>
+          <TouchableOpacity
+            onPress={back}>
+            <IconI name="ios-return-down-back" size={25} />
+          </TouchableOpacity>
+        </View>
 
-      {/* Top Search */}
-      <View style={{ marginHorizontal: 20 }}>
-        <Text style={{ fontWeight: 'bold', color: '#0B192D', fontSize: 25 }}>Search Campaign</Text>
-        <View style={{ backgroundColor: '#EEEEEE', height: 50, marginTop: 20, flexDirection: 'row' }}>
-          <View style= {{width: '15%', justifyContent: 'center', alignItems: 'center',}}>
-            <IconI name="ios-search-sharp" size={25} />
+        {/* Top Search */}
+        <View style={{ marginHorizontal: 20 }}>
+          <Text style={{ fontWeight: 'bold', color: '#0B192D', fontSize: 25 }}>Search Campaign</Text>
+          <View style={{ backgroundColor: '#EEEEEE', height: 50, marginTop: 20, flexDirection: 'row' }}>
+            <View style={{ width: '15%', justifyContent: 'center', alignItems: 'center', }}>
+              <IconI name="ios-search-sharp" size={25} />
+            </View>
+            <TextInput
+              placeholder="CODE"
+              style={{ width: '80%' }}
+              onChangeText={setCode} />
           </View>
-          <TextInput 
-          placeholder="CODE"
-          style = {{width: '80%'}}
-          onChangeText = {setCode} />
         </View>
       </View>
-      </View>
 
-      <View style = {{flex: 1, justifyContent: 'center', alignItems: 'flex-end', paddingRight: 20}}>
-        <TouchableOpacity 
-        onPress={searchCode}
-        style = {{height: 40, width: 90, backgroundColor: '#3383F9', borderRadius: 8, justifyContent: 'center'}}>
-          <Text style = {{textAlign: 'center', color: '#FFFFFF'}}>Search</Text>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end', paddingRight: 20 }}>
+        <TouchableOpacity
+          onPress={searchCode}
+          style={{ height: 40, width: 90, backgroundColor: '#3383F9', borderRadius: 8, justifyContent: 'center' }}>
+          <Text style={{ textAlign: 'center', color: '#FFFFFF' }}>Search</Text>
         </TouchableOpacity>
       </View>
       {/* <BottomSheet isOpen = {false}>
