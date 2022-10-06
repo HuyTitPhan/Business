@@ -11,7 +11,7 @@ const Calendars = ({ navigation }) => {
     useEffect(() => {
         let obj = {...data}
         campaign.forEach(e => {
-            obj[e.date] = { selected: true, selectedColor: 'red' }
+            obj[e.dateStart] = { selected: true, selectedColor: 'red' }
         });
         setData( obj);
     console.log(campaign, 'campaign');
