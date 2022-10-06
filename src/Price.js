@@ -1,8 +1,9 @@
 import { Text, VStack } from "native-base";
 import React from "react";
 import { Dimensions, ScrollView, View, SafeAreaView } from "react-native";
+import Back from './Back';
 const width = Dimensions.get('window').width;
-export const Example = () => {
+export const Example = (props) => {
     const list = [
         { industry: 'Advocacy', cpc1: 1.43, cpc2: 0.62 },
         { industry: 'Auto', cpc1: 2.46, cpc2: 0.58 },
@@ -23,6 +24,7 @@ export const Example = () => {
     ]
     return (
         <SafeAreaView style={{ marginTop: 20, paddingHorizontal: 10 }}>
+            <Back back={() => props.navigation.goBack()} />
             <View style={{ flexDirection: 'row' }}>
                 <Text style={{ flex: 3, color: 'gray', fontSize: 8, fontWeight: 'bold', fontFamily: 'Time' }}>INDUSTRY</Text>
                 <Text style={{ flex: 1, color: 'gray', fontSize: 8, fontWeight: 'bold', textAlign: 'right', marginRight: 10 }}>SEARCH NETWORK</Text>

@@ -43,6 +43,12 @@ const Campaign = ({ props, navigation }) => {
                 dateEnd: moment(dateEnd).format('YYYY-MM-DD'),
                 level: level
             }
+            onContent("");
+            onDescribe("");
+            onMarketing("");
+            onBudget("");
+            setLevel("once");
+            
             listCampaign.push(obj)
             setListCampaign(listCampaign)
             console.log(obj);
