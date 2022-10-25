@@ -1,12 +1,9 @@
 import React from 'react';
 import {
-  Dimensions, SafeAreaView, StyleSheet,
-  Text, TouchableOpacity, View
+  Dimensions, SafeAreaView, StyleSheet
 } from 'react-native';
-import MonthChart from './Chart1';
-import YearChart from './Chart2';
+import { ContributionGraph, ProgressChart } from "react-native-chart-kit";
 import Back from './Back';
-import { ScrollView } from 'native-base';
 
 const width = Dimensions.get('window').width;
 
@@ -27,31 +24,72 @@ const Warppers = (props) => {
     onScreen2(0);
   }
 
+  const data = {
+    labels: ["Swim", "Bike", "Run"], // optional
+    data: [0.2, 0.3, 0.3, 0.7]
+  }
+
+  const commitsData = [
+    { date: "2017-01-02", count: 1 },
+    { date: "2017-01-03", count: 2 },
+    { date: "2017-01-04", count: 3 },
+    { date: "2017-01-05", count: 4 },
+    { date: "2017-01-06", count: 5 },
+    { date: "2017-01-30", count: 2 },
+    { date: "2017-01-31", count: 3 },
+    { date: "2017-03-01", count: 2 },
+    { date: "2017-04-02", count: 4 },
+    { date: "2017-03-05", count: 2 },
+    { date: "2017-02-30", count: 4 }
+  ];
+
 
   return (
 
-    <SafeAreaView  style={{ flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       {/* Back */}
-      <Back back={() => props.navigation.goBack()}/> 
-      <View style = {{ width: '100%', justifyContent: 'center', alignItems: 'center'}}>
-      <View style={{ height: 30, flexDirection: 'row', backgroundColor: 'gray', width: width * 0.4, borderRadius: 5}}>
-        <TouchableOpacity
-          style={button[screen1]}
-          onPress={clickMonth}>
-          <Text style={{ color: 'white' }}>Month</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={button[screen2]}
-          onPress={clickYear}>
-          <Text style={{ color: 'white' }}>Year</Text>
-        </TouchableOpacity>
-      </View>
-      </View>
-        <ScrollView>
-        {
-          screen1 == 0 ? <MonthChart /> : <YearChart />
-        }
-        </ScrollView>
+      <Back back={() => props.navigation.goBack()} />
+      <ProgressChart
+        data={data}
+        width={Dimensions.get('window').width - 16}
+        height={300}
+        chartConfig={{
+          backgroundColor: '#1cc910',
+          backgroundGradientFrom: '#eff3ff',
+          backgroundGradientTo: '#efefef',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        style={{
+          marginVertical: 8,
+          borderRadius: 16,
+        }}
+      />
+
+      <ContributionGraph
+        values={commitsData}
+        endDate={new Date("2017-04-01")}
+        width={Dimensions.get('window').width - 16}
+        height={300}
+        numDays={105}
+        chartConfig={{
+          backgroundColor: '#1cc910',
+          backgroundGradientFrom: '#eff3ff',
+          backgroundGradientTo: '#efefef',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        style={{
+          marginVertical: 8,
+          borderRadius: 16,
+        }}
+      />
     </SafeAreaView >
 
   );

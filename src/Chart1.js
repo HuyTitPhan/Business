@@ -4,7 +4,7 @@ import {
   Alert, Dimensions, StyleSheet, View, Text
 } from 'react-native';
 import {
-  LineChart
+  LineChart, ProgressChart, ContributionGraph
 } from "react-native-chart-kit";
 import { useSelector } from "react-redux";
 import IconF from 'react-native-vector-icons/FontAwesome';
@@ -12,13 +12,13 @@ import IconF from 'react-native-vector-icons/FontAwesome';
 const Warppers = () => {
   const campaign = useSelector((state) => state.campaign);
 
-  useFocusEffect(() => {
-    console.log(campaign);
-    if (campaign.length == 0) {
-      Alert.alert("please create a campaign to use the function")
-    }
+  // useFocusEffect(() => {
+  //   console.log(campaign);
+  //   if (campaign.length == 0) {
+  //     Alert.alert("please create a campaign to use the function")
+  //   }
 
-  })
+  // })
 
   let days = Array(31).fill().map((_, i) => i + 1);
 
@@ -30,28 +30,31 @@ const Warppers = () => {
   //   return moneyToDay.reduce((c, v) => parseInt(v.budget) + c, 0)
   // });
   // console.log("moneys", moneys);
+  const data = {
+    labels: ["Swim", "Bike", "Run"], // optional
+    data: [0.2, 0.3, 0.3, 0.7]
+  }
+
+  const commitsData = [
+    { date: "2017-01-02", count: 1 },
+    { date: "2017-01-03", count: 2 },
+    { date: "2017-01-04", count: 3 },
+    { date: "2017-01-05", count: 4 },
+    { date: "2017-01-06", count: 5 },
+    { date: "2017-01-30", count: 2 },
+    { date: "2017-01-31", count: 3 },
+    { date: "2017-03-01", count: 2 },
+    { date: "2017-04-02", count: 4 },
+    { date: "2017-03-05", count: 2 },
+    { date: "2017-02-30", count: 4 }
+  ];
 
   return (
     <View style={{ backgroundColor: '#fff9eb', height: '100%' }}>
-      <LineChart
-        data={{
-          labels: [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-          ],
-          datasets: [
-            {
-              data: [20, 45, 28, 80, 99, 43],
-              strokeWidth: 2,
-            },
-          ],
-        }}
+      <ProgressChart
+        data={data}
         width={Dimensions.get('window').width - 16}
-        height={220}
+        height={300}
         chartConfig={{
           backgroundColor: '#1cc910',
           backgroundGradientFrom: '#eff3ff',
@@ -67,16 +70,31 @@ const Warppers = () => {
           borderRadius: 16,
         }}
       />
-      <View style={{ paddingLeft: 10 }}>
-        <View style={{ flexDirection: 'row', marginVertical: 15 }}>
-          <IconF name='caret-up' size={20} style={{ width: 20 }}></IconF>
-          <Text>Budget</Text>
-        </View>
-        <View style={{ flexDirection: 'row', marginBottom: 60 }}>
-          <IconF name='caret-right' size={20} style={{ width: 20 }}></IconF>
-          <Text>Day</Text>
-        </View>
-      </View>
+
+<ContributionGraph
+        values={commitsData}
+        endDate={new Date("2017-04-01")}
+        width={Dimensions.get('window').width - 16}
+        height={300}
+        numDays={105}
+        chartConfig={{
+          backgroundColor: '#1cc910',
+          backgroundGradientFrom: '#eff3ff',
+          backgroundGradientTo: '#efefef',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        style={{
+          marginVertical: 8,
+          borderRadius: 16,
+        }}
+      />
+      
+      
+      
     </View>
   );
 }
