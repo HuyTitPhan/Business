@@ -36,7 +36,6 @@ const Warppers = () => {
   const myTimeout = setTimeout(() => Alert.alert("Notification","My Alert Msg"), 2000);
 
  }
-i
  
 
 

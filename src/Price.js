@@ -1,12 +1,10 @@
 import { Text, VStack } from "native-base";
 import React from "react";
 import { Dimensions, ScrollView, View, SafeAreaView, StyleSheet } from "react-native";
+import Back from './Back';
 const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 20,
-        paddingHorizontal: 10
-    },
+    
     renderItem: {
         flexDirection: 'row',
         paddingVertical: 10,
@@ -25,7 +23,7 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function Home(props) {
+export default function Home({navigation}) {
     const list = [
         { industry: 'Advocacy', cpc1: 1.43, cpc2: 0.62 },
         { industry: 'Auto', cpc1: 2.46, cpc2: 0.58 },
@@ -46,29 +44,34 @@ export default function Home(props) {
     ]
     return (
         <SafeAreaView style={styles.container}>
-
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={{ flex: 3, color: 'gray', fontSize: 8, fontWeight: 'bold', fontFamily: 'Time' }}>INDUSTRY</Text>
-                <Text style={{ flex: 1, color: 'gray', fontSize: 8, fontWeight: 'bold', textAlign: 'right', marginRight: 10 }}>SEARCH NETWORK DISPLAY NETWORK</Text>
-                <Text style={{ flex: 1, color: 'gray', fontSize: 8, fontWeight: 'bold', textAlign: 'center' }}>RATIO (%)</Text>
-            </View>
+            {/* back */}
             <ScrollView>
+            <Back back={() => navigation.goBack()} />
+            <View style = {{marginHorizontal: 20}}>
+            <View style={{ flexDirection: 'row' }}>
+                <Text style={{ flex: 4, color: 'gray', fontSize: 8, fontWeight: 'bold', fontFamily: 'Time' }}>INDUSTRY</Text>
+                <Text style={{ flex: 2, color: 'gray', fontSize: 8, fontWeight: 'bold', textAlign: 'right', marginRight: 10 }}>SEARCH NETWORK DISPLAY NETWORK</Text>
+                <Text style={{ flex: 2, color: 'gray', fontSize: 8, fontWeight: 'bold', textAlign: 'center' }}>RATIO (%)</Text>
+            </View>
+            
                 {
                     list.map((item, i) =>
 
                         <View style={styles.renderItem}>
-                            <Text style={{ flex: 3, fontSize: 15, fontWeight: 'bold', color: '#1B1D21' }}>{item.industry}</Text>
-                            <View style={{ flex: 1, height: 30 }}>
+                            <Text style={{ flex: 4, fontSize: 15, fontWeight: 'bold', color: '#1B1D21' }}>{item.industry}</Text>
+                            <View style={{ flex: 2, height: 35 }}>
                                 <Text style={[styles.text, {color: '#00CC88'}]}>{item.cpc1}</Text>
                                 <Text style={styles.text}>{item.cpc2}</Text>
                             </View>
-                            <View style={{ flex: 1, height: 30, justifyContent: 'center', alignContent: 'center', backgroundColor: '#00CC88' }}>
+                            <View style={{ flex: 2, height: 35, justifyContent: 'center', alignContent: 'center', backgroundColor: '#00CC88' }}>
                                 <Text style={{ textAlign: 'center', fontSize: 13, color: 'white', borderRadius: 5}}>{Math.round(item.cpc1 / item.cpc2 * 100) / 100}%</Text>
                             </View>
                         </View>
 
                     )
                 }
+            
+            </View>
             </ScrollView>
 
         </SafeAreaView >
