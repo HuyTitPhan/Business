@@ -4,7 +4,7 @@ import { Dimensions, ScrollView, View, SafeAreaView, StyleSheet } from "react-na
 const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20, 
+        marginTop: 20,
         paddingHorizontal: 10
     },
     renderItem: {
@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     text: {
-        flex: 1, 
-        textAlign: 'center', 
-        fontSize: 13, 
+        flex: 1,
+        textAlign: 'center',
+        fontSize: 13,
         fontWeight: 'bold'
     },
 });

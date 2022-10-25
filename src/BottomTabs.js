@@ -78,7 +78,7 @@ export default function MyTabBar({ state, descriptors, navigation }) {
                             {label == 'Calendars' && <IconO name='sticky-note-o' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
                             {label == 'Charts' && <IconO name='line-chart' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
                             {label == 'Campaign' && <IconA name='create' size={60} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
-                            {label == 'Settings' && <IconA name='md-settings' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
+                            {label == 'Settings' && <IconM name='info-outline' size={25} color={isFocused ? '#3383F9' : '#D4D5DD'} />}
                         </View>
                         {/* <Text style={{ color: isFocused ? '#34ace0' : '#222', fontWeight: isFocused ? '600' : '400' }}>
                             {label}

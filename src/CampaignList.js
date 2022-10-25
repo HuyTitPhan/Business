@@ -62,23 +62,23 @@ export const Example = (props) => {
                         <ScrollView>
                             {
                                 result.map((item, i) =>
-                                    <View style={{ backgroundColor: '#ffffff', borderRadius: 10, paddingLeft: 20, marginBottom: 15 }}>
+                                    <View style={{ backgroundColor: '#ffffff', borderRadius: 20, paddingLeft: 20, marginBottom: 15 }}>
                                         <View style={{ marginTop: 20, flexDirection: 'row' }}>
                                             <View style={{ flex: 4 }}>
                                                 <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{item.content}</Text>
-                                                <View style = {{flexDirection: 'row'}}>
+                                                <View style={{ flexDirection: 'row' }}>
 
                                                 </View>
                                             </View>
-                                            
-                                                <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                                                    <TouchableOpacity onPress={() => goDetail(item.code)}>
-                                                        <View style={[styles.round, { backgroundColor: '#3383F9' }]}>
-                                                            <IconA name="arrowright" size={20} color='#FFFFFF' />
-                                                        </View>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            
+
+                                            <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                                                <TouchableOpacity onPress={() => goDetail(item.code)}>
+                                                    <View style={[styles.round, { backgroundColor: '#3383F9' }]}>
+                                                        <IconA name="arrowright" size={20} color='#FFFFFF' />
+                                                    </View>
+                                                </TouchableOpacity>
+                                            </View>
+
                                         </View>
 
                                         <View style={styles.border}></View>
@@ -107,11 +107,14 @@ export const Example = (props) => {
                                                 </View>
                                                 <Text>{item.dis}</Text>
                                             </View>
-                                            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                <TouchableOpacity onPress={() => removeList(item.content, i)}>
-                                                    <IconA name="delete" size={25} />
-                                                </TouchableOpacity>
-                                            </View>
+                                            {
+                                                item.status &&
+                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity onPress={() => removeList(item.content, i)}>
+                                                        <IconA name="delete" size={25} />
+                                                    </TouchableOpacity>
+                                                </View>
+                                            }
                                         </View>
                                     </View>
                                 )
