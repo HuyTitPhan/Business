@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Dimensions, SafeAreaView, StyleSheet
+  Dimensions, SafeAreaView, StyleSheet, Text, View
 } from 'react-native';
 import { ContributionGraph, ProgressChart } from "react-native-chart-kit";
 import Back from './Back';
@@ -25,8 +25,8 @@ const Warppers = (props) => {
   }
 
   const data = {
-    labels: ["Swim", "Bike", "Run"], // optional
-    data: [0.2, 0.3, 0.3, 0.7]
+    labels: ["1-3", "4-6", "7-9", "10-12"], // optional
+    data: [0.5, 0.3, 0.3, 0.7]
   }
 
   const commitsData = [
@@ -46,17 +46,19 @@ const Warppers = (props) => {
 
   return (
 
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       {/* Back */}
       <Back back={() => props.navigation.goBack()} />
+      <View>
+      <Text style = {styles.text}>Quarter chart</Text>
       <ProgressChart
         data={data}
         width={Dimensions.get('window').width - 16}
         height={300}
         chartConfig={{
           backgroundColor: '#1cc910',
-          backgroundGradientFrom: '#eff3ff',
-          backgroundGradientTo: '#efefef',
+          backgroundGradientFrom: '#FFFFFF',
+          backgroundGradientTo: '#FFFFFF',
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
           style: {
@@ -68,7 +70,10 @@ const Warppers = (props) => {
           borderRadius: 16,
         }}
       />
+      </View>
 
+      <View style = {{marginTop: 30}}>
+      <Text style = {styles.text}>Daily chart</Text>
       <ContributionGraph
         values={commitsData}
         endDate={new Date("2017-04-01")}
@@ -77,8 +82,8 @@ const Warppers = (props) => {
         numDays={105}
         chartConfig={{
           backgroundColor: '#1cc910',
-          backgroundGradientFrom: '#eff3ff',
-          backgroundGradientTo: '#efefef',
+          backgroundGradientFrom: '##FFFFFF',
+          backgroundGradientTo: '#FFFFFF',
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
           style: {
@@ -86,10 +91,11 @@ const Warppers = (props) => {
           },
         }}
         style={{
-          marginVertical: 8,
           borderRadius: 16,
         }}
       />
+      </View>
+      
     </SafeAreaView >
 
   );
@@ -102,6 +108,12 @@ const styles = StyleSheet.create({
   },
   chart: {
     flex: 1
+  },
+  text: {
+    textAlign: 'center',
+    color: '#0B192D',
+    fontWeight: 'bold',
+    fontSize: 18
   }
 });
 
