@@ -101,17 +101,36 @@ const Campaign = ({ props, navigation }) => {
                             style={styles.input}
                             onChangeText={onBudget}
                             value={budget}
-                            keyboardType='numeric'
                         />
                     </View>
 
-                    <View>
-                        <Text style={[styles.text,]}>Start Date :  </Text>
-                        {/* <Text style={{ width: width * 0.3, margin: 12, }}>{date.toDateString()}</Text>
-                            <TouchableOpacity style={{ width: width * 0.3 }} onPress={() => setOpen(true)}>
-                            <Icon name='calendar' size={25} color="#2c3e50" />
-                            </TouchableOpacity> */}
-                        <View style={{ marginHorizontal: 15, marginBottom: 10 }}>
+                    <View style = {{flexDirection: 'row', alignItems: 'center', marginVertical: 10}}>
+                    <View style = {{flexDirection: 'row', alignItems: 'center', flex: 1}}>
+                        <RadioButton
+                            value="once"
+                            status={level === 'once' ? 'checked' : 'unchecked'}
+                            onPress={() => setLevel('once')}
+                            color = '#3383F9'
+                            uncheckedColor="#B9B9B9"
+                        />
+                        <Text>Once</Text>
+                    </View>
+
+                    <View style = {{flexDirection: 'row', alignItems: 'center', flex: 1}}>
+                        <RadioButton
+                            value="daily"
+                            status={level === 'daily' ? 'checked' : 'unchecked'}
+                            onPress={() => setLevel('daily')}
+                            color = '#3383F9'
+                            uncheckedColor="#B9B9B9"
+                        />
+                        <Text>Daily</Text>
+                    </View>
+                    </View>
+
+                    <View style = {{marginTop: 10}}>
+                        <Text style={[styles.text]}>Start Date :  </Text>
+                        <View style={styles.datePicker}>
                             <TouchableOpacity
                                 style={{ paddingTop: 10 }}
                                 onPress={() => setOpen(true)}>
@@ -140,11 +159,7 @@ const Campaign = ({ props, navigation }) => {
 
                     <View>
                         <Text style={[styles.text,]}>End Date :  </Text>
-                        {/* <Text style={{ width: width * 0.3, margin: 12, }}>{date.toDateString()}</Text>
-                            <TouchableOpacity style={{ width: width * 0.3 }} onPress={() => setOpen(true)}>
-                            <Icon name='calendar' size={25} color="#2c3e50" />
-                            </TouchableOpacity> */}
-                        <View style={{ marginHorizontal: 15, marginBottom: 10 }}>
+                        <View style={styles.datePicker}>
                             <TouchableOpacity
                                 style={{ paddingTop: 10 }}
                                 onPress={() => setOpen(true)}>
@@ -171,28 +186,6 @@ const Campaign = ({ props, navigation }) => {
                         />
                     </View>
 
-                    <View style = {{flexDirection: 'row', alignItems: 'center'}}>
-                        <RadioButton
-                            value="once"
-                            status={level === 'once' ? 'checked' : 'unchecked'}
-                            onPress={() => setLevel('once')}
-                            color = '#3383F9'
-                            uncheckedColor="#B9B9B9"
-                        />
-                        <Text>Once</Text>
-                    </View>
-
-                    <View style = {{flexDirection: 'row', alignItems: 'center'}}>
-                        <RadioButton
-                            value="daily"
-                            status={level === 'daily' ? 'checked' : 'unchecked'}
-                            onPress={() => setLevel('daily')}
-                            color = '#3383F9'
-                            uncheckedColor="#B9B9B9"
-                        />
-                        <Text>Daily</Text>
-                    </View>
-
                 </View>
             </ScrollView>
             <View style={{ marginRight: 20 }}>
@@ -209,7 +202,7 @@ const Campaign = ({ props, navigation }) => {
 
 const styles = StyleSheet.create({
     input: {
-        // height: height / 5,
+        height: 60,
         marginLeft: 15,
         marginBottom: 10,
         borderBottomColor: 'gray',
@@ -259,6 +252,11 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         marginBottom: 10,
         marginTop: 12
+    }, 
+    datePicker: { 
+        marginHorizontal: 15,
+        marginBottom: 10, 
+        height: 60 
     }
 });
 

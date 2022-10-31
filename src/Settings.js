@@ -42,14 +42,14 @@ const Warppers = () => {
 
  return (
 
-  <SafeAreaView style={{ marginHorizontal: 20, marginTop: 30 }}>
+  <SafeAreaView style={{ marginHorizontal: 20, marginTop: 40 }}>
    {/* setting Notifications */}
 
    <View style = {{marginBottom: 20}}>
 
-   <Text style = {{fontSize: 18, fontWeight: 'bold', color: '#0B192D'}}>Thông báo</Text>
+   <Text style = {{fontSize: 18, fontWeight: 'bold', color: '#0B192D'}}>Notification</Text>
 
-   <Text>Nhận thông báo và thông tin mới</Text>
+   <Text>Receive notifications and new information</Text>
 
    </View>
 
@@ -57,7 +57,7 @@ const Warppers = () => {
 
     <View style={styles.viewText}>
 
-     <Text style = {styles.text}>Thông báo</Text>
+     <Text style = {styles.text}>Notification</Text>
 
     </View>
 
@@ -85,7 +85,7 @@ const Warppers = () => {
 
     <View style={styles.viewText}>
 
-     <Text style = {styles.text}>Rung khi có thông báo</Text>
+     <Text style = {styles.text}>Vibrate on notification</Text>
 
     </View>
 
@@ -145,7 +145,7 @@ const Warppers = () => {
 
      <View style={styles.viewText}>
 
-      <Text style = {styles.text}>Kiểm tra phiên bản</Text>
+      <Text style = {styles.text}>Check version</Text>
 
      </View>
 
