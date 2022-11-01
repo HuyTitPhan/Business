@@ -72,7 +72,7 @@ const Ilogin = ({ navigation }) => {
       </View>
 
       <View>
-        <Text>Mày muốn gì?</Text>
+        <Text>What you want to do?</Text>
         <View style={styles.headerTop}>
           <View style={{ width: '33.33%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
             <TouchableOpacity

@@ -12,17 +12,13 @@ const logo = require('../src/images/2.png')
 
 export const Example = ({ content, value }) => {
     return (
-        <View style = {{marginHorizontal: 20}}>
-        <View style= {{flexDirection: 'row'}}>
-            
-            <Text style = {styles.title}>{content}</Text>
-            
-            
-            <Text style = {styles.content}>{value}</Text>
-            
-        </View>
-        <View style={styles.border}></View>
-        
+        <View style={{ marginHorizontal: 20, marginBottom: 10 }}>
+            <View style={{ flexDirection: 'row' }}>
+                <Text style={styles.title}>{content}</Text>
+                <Text style={styles.content}>{value}</Text>
+            </View>
+            <View style={styles.border}></View>
+
         </View>
     )
 }
@@ -36,22 +32,22 @@ const Detail = (props) => {
     return (
         <SafeAreaView style={{ backgroundColor: '#fff', flex: 1, }}>
             <Back back={() => props.navigation.goBack()} />
-                    <View>
-                        <View style = {{height: 30, backgroundColor: campaign.status ? '#E7FAF0' : '#F5E4E8', justifyContent: 'center', marginBottom: 20}}>
-                            <View style = {{flexDirection: 'row', marginLeft: 15}}>
-                                <IconF name='flag' size={20} color = {campaign.status ?'#11C969' : '#F7484A'}/>
-                                <Text style = {{marginLeft: 10, color: campaign.status ?'#11C969' : '#F7484A'}}>{campaign.status ? 'Campaign' : 'Campaign canceled'}</Text>
-                            </View>
-                        </View>
-                        <Example content = 'Content' value = {campaign.content}/>
-                        <Example content = 'Describe' value = {campaign.describe}/>
-                        <Example content = 'Marketing' value = {campaign.marketing}/>
-                        <Example content = 'Code' value = {campaign.code}/>
-                        <Example content = 'status' value = {campaign.level}/>
-                        <Example content = 'Start Date' value = {campaign.dateStart}/>
-                        <Example content = 'End Date' value = {campaign.dateEnd}/>
-                        
+            <View>
+                <View style={{ height: 30, backgroundColor: campaign.status ? '#E7FAF0' : '#F5E4E8', justifyContent: 'center', marginBottom: 20 }}>
+                    <View style={{ flexDirection: 'row', marginLeft: 15 }}>
+                        <IconF name='flag' size={20} color={campaign.status ? '#11C969' : '#F7484A'} />
+                        <Text style={{ marginLeft: 10, color: campaign.status ? '#11C969' : '#F7484A' }}>{campaign.status ? 'Campaign' : 'Campaign canceled'}</Text>
                     </View>
+                </View>
+                <Example content='Content' value={campaign.content} />
+                <Example content='Describe' value={campaign.describe} />
+                <Example content='Marketing' value={campaign.marketing} />
+                <Example content='Code' value={campaign.code} />
+                <Example content='status' value={campaign.level} />
+                <Example content='Start Date' value={campaign.dateStart} />
+                <Example content='End Date' value={campaign.dateEnd} />
+
+            </View>
         </SafeAreaView>
     );
 };
@@ -60,12 +56,12 @@ const styles = StyleSheet.create({
     title: {
         flex: 1,
         color: 'gray',
-        fontSize: 13,
-    }, 
+        fontSize: 15,
+    },
     content: {
         flex: 1,
         color: '#0B192D',
-        fontSize: 15,
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'right'
     },

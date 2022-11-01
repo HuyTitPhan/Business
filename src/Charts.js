@@ -8,8 +8,6 @@ import Back from './Back';
 const width = Dimensions.get('window').width;
 
 const Warppers = (props) => {
-
-
   const [screen1, onScreen1] = React.useState(0);
   const [screen2, onScreen2] = React.useState(1);
   const [button, onButton] = React.useState([{ justifyContent: 'center', alignItems: 'center', backgroundColor: '#FFBD59', width: width * 0.2, borderRadius: 5 },
@@ -25,8 +23,8 @@ const Warppers = (props) => {
   }
 
   const data = {
-    labels: ["1-3", "4-6", "7-9", "10-12"], // optional
-    data: [0.5, 0.3, 0.3, 0.7]
+    labels: ["Q1", "Q2", "Q3", "Q4"], // optional
+    data: [0.1, 0.3, 0.1, 0.5]
   }
 
   const commitsData = [
@@ -40,7 +38,7 @@ const Warppers = (props) => {
     { date: "2017-03-01", count: 2 },
     { date: "2017-04-02", count: 4 },
     { date: "2017-03-05", count: 2 },
-    { date: "2017-02-30", count: 4 }
+    { date: "2017-02-30", count: 4 },
   ];
 
 
@@ -49,6 +47,30 @@ const Warppers = (props) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
       {/* Back */}
       <Back back={() => props.navigation.goBack()} />
+      <View >
+      <Text style = {styles.text}>Daily chart</Text>
+      <ContributionGraph
+        values={commitsData}
+        endDate={new Date("2017-04-01")}
+        width={Dimensions.get('window').width - 16}
+        height={300}
+        numDays={105}
+        chartConfig={{
+          backgroundColor: '#1cc910',
+          backgroundGradientFrom: '#FFFFFF',
+          backgroundGradientTo: '#FFFFFF',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        style={{
+          borderRadius: 16,
+        }}
+      />
+      </View>
+
       <View>
       <Text style = {styles.text}>Quarter chart</Text>
       <ProgressChart
@@ -67,30 +89,6 @@ const Warppers = (props) => {
         }}
         style={{
           marginVertical: 8,
-          borderRadius: 16,
-        }}
-      />
-      </View>
-
-      <View style = {{marginTop: 30}}>
-      <Text style = {styles.text}>Daily chart</Text>
-      <ContributionGraph
-        values={commitsData}
-        endDate={new Date("2017-04-01")}
-        width={Dimensions.get('window').width - 16}
-        height={300}
-        numDays={105}
-        chartConfig={{
-          backgroundColor: '#1cc910',
-          backgroundGradientFrom: '##FFFFFF',
-          backgroundGradientTo: '#FFFFFF',
-          decimalPlaces: 2,
-          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
-        }}
-        style={{
           borderRadius: 16,
         }}
       />

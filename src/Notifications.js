@@ -15,7 +15,7 @@ const Notifications = (props) => {
       {/* Notifications */}
       <View style={{ marginHorizontal: 20 }}>
         <Text style={{ fontWeight: 'bold', color: '#0B192D', fontSize: 25 }}>Notifications</Text>
-        <View style={{ backgroundColor: '#FFFFFF', marginTop: 20, flexDirection: 'row', borderRadius: 10, paddingVertical: 5}}>
+        {/* <View style={{ backgroundColor: '#FFFFFF', marginTop: 20, flexDirection: 'row', borderRadius: 10, paddingVertical: 5}}>
           <View style= {{width: '15%', justifyContent: 'center', alignItems: 'center'}}>
             <IconI name="ios-notifications-sharp" size={25} />
           </View>
@@ -24,6 +24,9 @@ const Notifications = (props) => {
             <Text>Chào mừng bạn đến với Bình Nguyên Vô Tận</Text>
             <Text>Hãy bắt đầu và tận hưởng tính năng nào</Text>
           </View>
+        </View> */}
+        <View style = {{height: height/1.5, justifyContent: 'center', alignItems: 'center'}}>
+          <Text style = {{color:'#767577', fontSize: 16}}> Notification is empty </Text>
         </View>
       </View>
     </SafeAreaView>
