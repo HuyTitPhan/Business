@@ -42,6 +42,7 @@ const Detail = (props) => {
                 <Example content='Content' value={campaign.content} />
                 <Example content='Describe' value={campaign.describe} />
                 <Example content='Marketing' value={campaign.marketing} />
+                <Example content='Budget' value={campaign.budget} />
                 <Example content='Code' value={campaign.code} />
                 <Example content='status' value={campaign.level} />
                 <Example content='Start Date' value={campaign.dateStart} />

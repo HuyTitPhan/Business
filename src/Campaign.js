@@ -28,8 +28,7 @@ const Campaign = ({ props, navigation }) => {
     const campaigns = useSelector((state) => state.campaign);
 
     const saveList = () => {
-        if (content === undefined || content == null || content.length <= 0 ||
-            budget === undefined || budget == null || budget.length <= 0) {
+        if (content === undefined || content == null || content.length <= 0) {
             Alert.alert("Please check the information again");
         } else {
             const obj = {

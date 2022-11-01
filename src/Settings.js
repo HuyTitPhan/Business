@@ -2,31 +2,19 @@ import React from 'react';
 import Back from './Back';
 
 import {
-
  Alert,
-
  SafeAreaView, StyleSheet, Switch, Text,
-
  TouchableOpacity,
-
  View
-
 } from 'react-native';
 
 import IconF from 'react-native-vector-icons/Fontisto';
 
-
-
 const Warppers = () => {
 
-
-
  const [isNoti, setIsNoti] = React.useState(false);
-
  const [isNoti2, setIsNoti2] = React.useState(false);
-
  const toggleSwitch = () => setIsNoti(previousState => !previousState);
-
  const click = () => setIsNoti2(previousState => !previousState);
 
 
@@ -37,7 +25,7 @@ const Warppers = () => {
  
  return (
 
-  <SafeAreaView style={{ marginHorizontal: 20, marginTop: 40 }}>
+  <SafeAreaView style={{ marginHorizontal: 20, marginTop: 50 }}>
    {/* setting Notifications */}
 
    <View style = {{marginBottom: 20}}>
@@ -154,8 +142,6 @@ const styles = StyleSheet.create({
   color: '#485261'
 
  }
-
-
 
 });
 
